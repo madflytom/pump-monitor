@@ -23,6 +23,12 @@ router.route('/orders').get((request, response) => {
   })
 })
 
+router.route('/levels').get((request, response) => {
+    Db.getLevels().then((data) => {
+      response.json(data[0]);
+    })
+  })
+
 router.route('/orders/:id').get((request, response) => {
   Db.getOrder(request.params.id).then((data) => {
     response.json(data[0]);

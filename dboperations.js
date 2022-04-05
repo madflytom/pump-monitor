@@ -12,6 +12,17 @@ async  function  getOrders() {
   }
 }
 
+async  function  getLevels() {
+    try {
+      let  pool = await  sql.connect(config);
+      let  levels = await  pool.request().query("SELECT * from Waterlevels ORDER BY LoggedTime DESC;");
+      return  levels.recordsets;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
 async  function  getOrder(productId) {
   try {
     let  pool = await  sql.connect(config);
@@ -45,5 +56,6 @@ async  function  addOrder(order) {
 module.exports = {
   getOrders:  getOrders,
   getOrder:  getOrder,
-  addOrder:  addOrder
+  addOrder:  addOrder,
+  getLevels: getLevels
 }
