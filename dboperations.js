@@ -23,6 +23,17 @@ async  function  getLevels() {
     }
   }
 
+  async  function  clearPastLevels() {
+    try {
+      let  pool = await  sql.connect(config);
+      let  query = await  pool.request().query("delete from WaterLevels where LoggedTime < DATEADD(day, -1, GETDATE());");
+      return  query.recordsets;
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
 async  function  getOrder(productId) {
   try {
     let  pool = await  sql.connect(config);
@@ -57,5 +68,6 @@ module.exports = {
   getOrders:  getOrders,
   getOrder:  getOrder,
   addOrder:  addOrder,
-  getLevels: getLevels
+  getLevels: getLevels,
+  clearPastLevels: clearPastLevels
 }

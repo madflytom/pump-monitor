@@ -29,6 +29,12 @@ router.route('/levels').get((request, response) => {
     })
   })
 
+  router.route('/clearlevels').post((request, response) => {
+    Db.clearPastLevels().then((data) => {
+      response.json(data[0]);
+    })
+  })
+
 router.route('/orders/:id').get((request, response) => {
   Db.getOrder(request.params.id).then((data) => {
     response.json(data[0]);
