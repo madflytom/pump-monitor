@@ -1,5 +1,5 @@
-var  Db = require('./dboperations');
-var  Order = require('./Order');
+var  Db = require('./database/dboperations');
+var  Order = require('./models/Order');
 var  express = require('express');
 var  bodyParser = require('body-parser');
 var  cors = require('cors');
