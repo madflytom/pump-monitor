@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-
+//this line imports react functionality 
+import React from 'react';
+//this line imports the Graph component
+//implemented in a graph.js file which is in the same directory
+import Graph from './graph.js';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Graph />
+    );
 }
-
 export default App;
