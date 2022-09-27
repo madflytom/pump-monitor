@@ -1,5 +1,6 @@
 var  config = require('./dbconfig');
 const  sql = require('mssql');
+const WaterLevelChartObject = require('../models/waterLevelChartObject');
 
 async  function  getOrders() {
   try {
@@ -15,7 +16,8 @@ async  function  getOrders() {
 async  function  getLevels() {
     try {
       let  pool = await  sql.connect(config);
-      let  levels = await  pool.request().query("SELECT * from Waterlevels ORDER BY LoggedTime DESC;");
+
+      let  levels = await  pool.request().query("SELECT Id as id, LoggedTime as label, Measurement as data from Waterlevels ORDER BY LoggedTime ASC;");
       return  levels.recordsets;
     }
     catch (error) {
