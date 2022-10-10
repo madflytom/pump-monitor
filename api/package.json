@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon api.js"
+    "start": "node api.js",
+    "startLocal": "nodemon api.js"
   },
   "dependencies": {
     "body-parser": "~1.0.1",

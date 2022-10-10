@@ -1,5 +1,4 @@
 var  Db = require('./database/dboperations');
-var  Order = require('./models/Order');
 var  express = require('express');
 var  bodyParser = require('body-parser');
 var  cors = require('cors');
@@ -16,12 +15,6 @@ router.use((request, response, next) => {
   next();
 });
  
- 
-router.route('/orders').get((request, response) => {
-  Db.getOrders().then((data) => {
-    response.json(data[0]);
-  })
-})
 
 router.route('/levels').get((request, response) => {
     Db.getLevels().then((data) => {
@@ -34,20 +27,7 @@ router.route('/levels').get((request, response) => {
       response.json(data[0]);
     })
   })
-
-router.route('/orders/:id').get((request, response) => {
-  Db.getOrder(request.params.id).then((data) => {
-    response.json(data[0]);
-  })
-})
-
-router.route('/orders').post((request, response) => {
-  let  order = { ...request.body }
-  Db.addOrder(order).then(data  => {
-    response.status(201).json(data);
-  })
-})
-  
+ 
   
 var  port = process.env.PORT || 8090;
 app.listen(port);
